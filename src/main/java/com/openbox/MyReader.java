@@ -16,16 +16,16 @@ public class MyReader implements ItemReader<String> {
 	public String read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException {
 		final long value = count;
 		System.out.println("MyReader : " + value);
-		if (value == 5 && retryCount <= 2) {
+
+		if (value == 3 && retryCount <= 2) {
 			retryCount++;
 			System.out.println("****");
 			Thread.sleep(500);
 			throw new MyException();
 		}
 
-		if (value < 10) {
+		if (value < 5) {
 			count++;
-
 			Thread.sleep(500);
 			return String.valueOf(value);
 		} else {
